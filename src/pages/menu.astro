@@ -1,45 +1,100 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { mittagsmenü } from '../data/menu/mittagsmenu';
+import { gemüse } from '../data/menu/gemüse';
 ---
 
 <Layout>
 	<div id="menu-container">
 		<div id="menu-header">
-			<h1>Mittagsmenü</h1>
-			<p class="subtitle">12:00 - 15:00Uhr</p>
-            <p>Zu jedem Gericht: Sauer-Scharf-Suppe als Vorspeise & Reis zum Hauptgang.</p>
+			<h1>Menü</h1>
+			<div id="filter-tags">
+				<button class="filter-tag active" data-category="mittagsmenu">Mittagsmenü</button>
+				<button class="filter-tag" data-category="gemuese">Gemüse</button>
+			</div>
 		</div>
 
 		<div id="menu-content">
-			<div class="menu-grid">
-				{mittagsmenü.map((item) => (
-					<div class="menu-item">
-						<div class="item-header">
-							<span class="item-number">{item.number}</span>
-							<h2 class="item-name">
-								<span class="name-german">{item.name_german}</span>
-								<span class="name-chinese">{item.name_chinese}</span>
-							</h2>
-							<span class="item-price">€{item.price}</span>
+			<!-- Mittagsmenü Section -->
+			<section id="mittagsmenu" class="category-section">
+				<h2 class="category-title">Mittagsmenü (H1-H12)</h2>
+				<p class="subtitle">(12:00 - 15:00 Uhr) Zu jedem Gericht: Sauer-Scharf-Suppe als Vorspeise & Reis zum Hauptgang.</p>
+				<div class="menu-grid">
+					{mittagsmenü.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+							
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
 						</div>
-						
-						{item.description && (
-							<p class="item-description">{item.description}</p>
-						)}
-						
-						{item.allergens && (
-							<p class="item-allergens">Allergens: {item.allergens}</p>
-						)}
-					</div>
-				))}
-			</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Gemüse Section -->
+			<section id="gemuese" class="category-section">
+				<h2 class="category-title">Gemüse (59-73)</h2>
+				<div class="menu-grid">
+					{gemüse.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+							
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
 		</div>
 
 		<div id="menu-footer">
 			
 		</div>
 	</div>
+
+	<script>
+		document.querySelectorAll('.filter-tag').forEach(button => {
+			button.addEventListener('click', function() {
+				const category = this.getAttribute('data-category');
+				
+				// Update active state
+				document.querySelectorAll('.filter-tag').forEach(btn => {
+					btn.classList.remove('active');
+				});
+				this.classList.add('active');
+				
+				// Scroll to section
+				const section = document.getElementById(category);
+				if (section) {
+					section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		});
+	</script>
 </Layout>
 
 <style>
@@ -72,6 +127,7 @@ import { mittagsmenü } from '../data/menu/mittagsmenu';
 		color: #666;
 		font-size: 1em;
 		font-weight: 400;
+		margin-bottom: 20px;
 	}
 
 	.menu-grid {
@@ -168,6 +224,51 @@ import { mittagsmenü } from '../data/menu/mittagsmenu';
 
 	#menu-footer p {
 		margin: 8px 0;
+	}
+
+	#filter-tags {
+		display: flex;
+		justify-content: center;
+		gap: 12px;
+		margin-top: 20px;
+		flex-wrap: wrap;
+	}
+
+	.filter-tag {
+		padding: 10px 24px;
+		border: 2px solid #d4af37;
+		background: transparent;
+		color: #d4af37;
+		font-size: 1em;
+		font-weight: 600;
+		border-radius: 24px;
+		cursor: pointer;
+		transition: all 0.3s ease;
+	}
+
+	.filter-tag:hover {
+		background: rgba(212, 175, 55, 0.1);
+		transform: scale(1.05);
+	}
+
+	.filter-tag.active {
+		background: #d4af37;
+		color: white;
+		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+	}
+
+	.category-section {
+		margin-bottom: 60px;
+		scroll-margin-top: 40px;
+	}
+
+	.category-title {
+		font-size: 1.8em;
+		color: #222;
+		font-weight: 700;
+		margin: 0 0 30px 0;
+		padding-bottom: 15px;
+		border-bottom: 2px solid #d4af37;
 	}
 
 	@media (max-width: 768px) {

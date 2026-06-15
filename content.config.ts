@@ -26,7 +26,7 @@ const menuSchema = z.object({
     // type: z.string(),
     description: z.string(),
     unit: z.string().optional(),
-    allergens: z.string(),
+    allergens: z.string().optional(),
     additive: z.string().optional(),
 });
 
