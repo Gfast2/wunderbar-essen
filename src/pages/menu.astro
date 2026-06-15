@@ -427,9 +427,12 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 		<div id="menu-footer">
 			
 		</div>
+
+		<button id="back-to-top" aria-label="Back to top">↑</button>
 	</div>
 
 	<script>
+		// Filter tag navigation
 		document.querySelectorAll('.filter-tag').forEach(button => {
 			button.addEventListener('click', function() {
 				const category = this.getAttribute('data-category');
@@ -446,6 +449,21 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 					section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 				}
 			});
+		});
+
+		// Back to top button
+		const backToTopBtn = document.getElementById('back-to-top');
+		
+		window.addEventListener('scroll', function() {
+			if (window.pageYOffset > 300) {
+				backToTopBtn.classList.add('visible');
+			} else {
+				backToTopBtn.classList.remove('visible');
+			}
+		});
+
+		backToTopBtn.addEventListener('click', function() {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
 		});
 	</script>
 </Layout>
@@ -628,6 +646,39 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 		margin: 0 0 30px 0;
 		padding-bottom: 15px;
 		border-bottom: 2px solid #d4af37;
+	}
+
+	#back-to-top {
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+		width: 50px;
+		height: 50px;
+		background: #d4af37;
+		color: white;
+		border: none;
+		border-radius: 50%;
+		font-size: 1.5em;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+		z-index: 100;
+	}
+
+	#back-to-top:hover {
+		background: #c99a2a;
+		box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+		transform: translateY(-3px);
+	}
+
+	#back-to-top.visible {
+		opacity: 1;
+		visibility: visible;
 	}
 
 	@media (max-width: 768px) {
