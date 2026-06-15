@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import { mittagsmenü } from '../data/menu/mittagsmenu';
 import { gemüse } from '../data/menu/gemüse';
+import { desert } from '../data/menu/desert';
+import { reiseAndNudeln } from '../data/menu/reiseAndNudeln';
+import { meeresfrüchte } from '../data/menu/meeresfrüchte';
+import { schwein } from '../data/menu/schwein';
 ---
 
 <Layout>
@@ -11,6 +15,10 @@ import { gemüse } from '../data/menu/gemüse';
 			<div id="filter-tags">
 				<button class="filter-tag active" data-category="mittagsmenu">Mittagsmenü</button>
 				<button class="filter-tag" data-category="gemuese">Gemüse</button>
+				<button class="filter-tag" data-category="desert">Dessert</button>
+				<button class="filter-tag" data-category="reiseAndNudeln">Reis & Nudeln</button>
+				<button class="filter-tag" data-category="meeresfrüchte">Meeresfrüchte</button>
+				<button class="filter-tag" data-category="schwein">Schwein</button>
 			</div>
 		</div>
 
@@ -48,6 +56,114 @@ import { gemüse } from '../data/menu/gemüse';
 				<h2 class="category-title">Gemüse (59-73)</h2>
 				<div class="menu-grid">
 					{gemüse.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+							
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Dessert Section -->
+			<section id="desert" class="category-section">
+				<h2 class="category-title">Dessert (82-85)</h2>
+				<div class="menu-grid">
+					{desert.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+							
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- reiseAndNudeln Section -->
+			<section id="reiseAndNudeln" class="category-section">
+				<h2 class="category-title">Reis & Nudeln (71-81)</h2>
+				<div class="menu-grid">
+					{reiseAndNudeln.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+							
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- meeresfrüchte Section -->
+			<section id="meeresfrüchte" class="category-section">
+				<h2 class="category-title">Meeresfrüchte (52-58)</h2>
+				<div class="menu-grid">
+					{meeresfrüchte.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+							
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- schwein Section -->
+			<section id="schwein" class="category-section">
+				<h2 class="category-title">Schwein (41-51)</h2>
+				<div class="menu-grid">
+					{schwein.map((item) => (
 						<div class="menu-item">
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
