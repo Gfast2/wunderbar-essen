@@ -6,6 +6,12 @@ import { desert } from '../data/menu/desert';
 import { reiseAndNudeln } from '../data/menu/reiseAndNudeln';
 import { meeresfrüchte } from '../data/menu/meeresfrüchte';
 import { schwein } from '../data/menu/schwein';
+import { dimsum } from '../data/menu/dimsum';
+import { vorspeise } from '../data/menu/vorspeise';
+import { suppen } from '../data/menu/suppen';
+import { huhnAndEnte } from '../data/menu/huhnAndEnte';
+import { rind } from '../data/menu/rind';
+import { lamm } from '../data/menu/lamm';
 ---
 
 <Layout>
@@ -19,6 +25,12 @@ import { schwein } from '../data/menu/schwein';
 				<button class="filter-tag" data-category="reiseAndNudeln">Reis & Nudeln</button>
 				<button class="filter-tag" data-category="meeresfrüchte">Meeresfrüchte</button>
 				<button class="filter-tag" data-category="schwein">Schwein</button>
+				<button class="filter-tag" data-category="dimsum">Dim Sum</button>
+				<button class="filter-tag" data-category="vorspeise">Vorspeise</button>
+				<button class="filter-tag" data-category="suppen">Suppen</button>
+				<button class="filter-tag" data-category="huhnAndEnte">Hühn & Ente</button>
+				<button class="filter-tag" data-category="rind">Rind</button>
+				<button class="filter-tag" data-category="lamm">Lamm</button>
 			</div>
 		</div>
 
@@ -178,6 +190,165 @@ import { schwein } from '../data/menu/schwein';
 								<p class="item-description">{item.description}</p>
 							)}
 							
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- dimsum Section -->
+			<section id="dimsum" class="category-section">
+				<h2 class="category-title">Dim Sum (11-20)</h2>
+				<div class="menu-grid">
+					{dimsum.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+			
+			<!-- vorspeise Section -->
+			<section id="vorspeise" class="category-section">
+				<h2 class="category-title">Vorspeise (1-10)</h2>
+				<div class="menu-grid">
+					{vorspeise.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- suppen Section -->
+			<section id="suppen" class="category-section">
+				<h2 class="category-title">Suppen (11-20)</h2>
+				<div class="menu-grid">
+					{suppen.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section id="huhnAndEnte" class="category-section">
+				<h2 class="category-title">Hühn & Ente (32-39)</h2>
+				<div class="menu-grid">
+					{huhnAndEnte.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section id="rind" class="category-section">
+				<h2 class="category-title">Rind (36-39)</h2>
+				<div class="menu-grid">
+					{rind.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+
+							{item.allergens && (
+								<p class="item-allergens">Allergens: {item.allergens}</p>
+							)}
+						</div>
+					))}
+				</div>
+			</section>
+
+			<section id="lamm" class="category-section">
+				<h2 class="category-title">Lamm (36-39)</h2>
+				<div class="menu-grid">
+					{lamm.map((item) => (
+						<div class="menu-item">
+							<div class="item-header">
+								<span class="item-number">{item.number}</span>
+								<h3 class="item-name">
+									<span class="name-german">{item.name_german}</span>
+									<span class="name-chinese">{item.name_chinese}</span>
+								</h3>
+								<span class="item-price">€{item.price}</span>
+							</div>
+
+							{item.description && (
+								<p class="item-description">{item.description}</p>
+							)}
+
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {item.allergens}</p>
 							)}
