@@ -1,3 +1,9 @@
+---
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
+const isMenu = currentPath.startsWith('/menu');
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,6 +14,15 @@
 		<title>Wunderbar</title>
 	</head>
 	<body>
+		<header>
+			<div class="header-content">
+				<img src="logo-text.png" alt="Wunderbar Logo" class="logo"/>
+				<nav class="menu">
+					<a href="/" class={isHome ? 'is-active' : ''}>Home</a>
+					<a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
+				</nav>
+			</div>
+		</header>
 		<slot />
 	</body>
 </html>
@@ -18,5 +33,44 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+	}
+
+	header {
+		background-color: #d4af37;
+		padding: 1rem 2rem;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.header-content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.logo {
+		height: 25px;
+	}
+
+	.menu {
+		display: flex;
+		gap: 2rem;
+	}
+
+	.menu a {
+		text-decoration: none;
+		color: #333;
+		font-weight: 500;
+		transition: color 0.3s ease;
+	}
+
+	.menu a:hover {
+		color: #666;
+	}
+
+	.menu a.is-active {
+		font-weight: bold;
+		text-decoration: underline overline #ff3028 3px;
 	}
 </style>
