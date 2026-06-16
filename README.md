@@ -1,5 +1,9 @@
 # Astro Starter Kit: Basics
 
+Keep original Astra template README.md to supplement my own documentation.
+
+The project related documentation can be found [Here](README_WUNDERBAR.md)
+
 ```sh
 pnpm create astro@latest -- --template basics
 ```

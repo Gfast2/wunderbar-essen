@@ -1,6 +1,10 @@
 # wunderbar-website
 
-## Core Function
+Done a new website for friend owning [this Chinese restaurant](https://maps.app.goo.gl/rdxRy6qhUC5VDWnt9).
+
+It shouldn't take long to run this live under: https://wunderbar-essen.de/
+
+## Roadmap
 
 As a restaurant website, the following information is the most valuable ones:
 
@@ -15,16 +19,5 @@ As a restaurant website, the following information is the most valuable ones:
 After website out of MVP, the following Functions should be included:
 
 - New / Event Table
-- Cook Introduction
+- Cook Style Introduction
 - Multi Lingua support
-
-## Tech Detail
-
-### Menu
-
-It should be done in a structural way with each menu's meta data stored in own slot.
-
-Let's try the `Astro DB / Turso` as Claud suggested. \
-Out come: It's a no-er, because Astro DB is deprecating and we need zero write, but read only. Claude suggest more fitting way: 👇
-
-> Content Collections (Astro's native, type-safe way to manage structured content) + Fuse.js for search.
