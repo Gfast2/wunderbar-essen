@@ -1,11 +1,132 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<main class="container">
+		<div>
+			<img src="logo-icon.jpg" alt="Wunderbar Logo" style="display: block; margin: 0 auto 30px; max-width: 150px;" />
+			<img src="logo-text.jpg" alt="Wunderbar Logo" style="display: block; margin: 0 auto 30px; max-width: 150px; opacity: 0.5;" />
+		</div>
+		<section class="contact-section">
+			<div class="info-block">
+				<h2>Öffnungszeiten</h2>
+				<div class="hours">
+					<p><strong>Montag – Freitag</strong></p>
+					<p>12:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</p>
+				</div>
+				<div class="hours">
+					<p><strong>Samstag & Sonntag</strong></p>
+					<p>Nur private Reservierung</p>
+				</div>
+			</div>
+			
+			<div class="info-block">
+				<h2>Kontaktinformationen</h2>
+				<p><strong>Inhaber:</strong> Renjian Zhao</p>
+				<p><strong>Adresse:</strong> Bernhardstrasse 12, 10715 Berlin</p>
+				<p><strong>Telefon:</strong> 03033912911 / 017670981275</p>
+				<p><strong>Website:</strong> <a href="https://www.wunderbar-essen.de/">https://www.wunderbar-essen.de/</a></p>
+				<p><strong>WeChat ID:</strong> xwwilliam</p>
+			</div>
+		</section>
+	</main>
+
+	<style>
+		.container {
+			font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 40px 20px;
+			background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%);
+			min-height: 100vh;
+		}
+
+		h1 {
+			text-align: center;
+			color: #222;
+			margin-bottom: 2.5rem;
+			font-size: 2.5em;
+			font-weight: 700;
+			letter-spacing: 1px;
+			border-bottom: 3px solid #d4af37;
+			padding-bottom: 20px;
+		}
+
+		h2 {
+			color: #222;
+			border-bottom: 2px solid #d4af37;
+			padding-bottom: 0.75rem;
+			margin-bottom: 1.5rem;
+			font-size: 1.3em;
+			font-weight: 600;
+		}
+
+		.contact-section {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+		}
+
+		.info-block {
+			background: white;
+			border: 1px solid #e0e0e0;
+			margin-bottom: 0;
+			padding: 2rem;
+			border-radius: 8px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+			transition: all 0.3s ease;
+		}
+
+		.info-block:hover {
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			border-color: #d4af37;
+			transform: translateY(-2px);
+		}
+
+		.info-block p {
+			margin: 0.75rem 0;
+			line-height: 1.7;
+			color: #555;
+			font-size: 1em;
+		}
+
+		.info-block strong {
+			color: #222;
+			font-weight: 600;
+		}
+
+		.hours {
+			margin-bottom: 1.5rem;
+			padding-bottom: 1rem;
+		}
+
+		.hours:last-child {
+			margin-bottom: 0;
+			padding-bottom: 0;
+		}
+
+		.hours p {
+			margin: 0.4rem 0;
+			color: #555;
+		}
+
+		.hours p:first-child {
+			font-weight: 600;
+			color: #222;
+			font-size: 1.05em;
+		}
+
+		a {
+			color: #d4af37;
+			text-decoration: none;
+			font-weight: 500;
+			transition: all 0.3s ease;
+		}
+
+		a:hover {
+			color: #222;
+			text-decoration: underline;
+		}
+	</style>
 </Layout>

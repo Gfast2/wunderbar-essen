@@ -452,7 +452,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 		});
 
 		// Back to top button
-		const backToTopBtn = document.getElementById('back-to-top');
+		const backToTopBtn = document.getElementById('back-to-top') as HTMLElement;
 		
 		window.addEventListener('scroll', function() {
 			if (window.pageYOffset > 300) {
