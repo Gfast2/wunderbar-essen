@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { translateAllergens } from '../utils/allergenTranslator';
 import { mittagsmenü } from '../data/menu/mittagsmenu';
 import { gemüse } from '../data/menu/gemüse';
 import { desert } from '../data/menu/desert';
@@ -60,7 +61,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 							
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -87,7 +88,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 							
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -114,7 +115,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 							
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -141,7 +142,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 							
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -168,7 +169,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 							
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -195,7 +196,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 							
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -222,7 +223,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -249,7 +250,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -276,7 +277,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -302,7 +303,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -328,7 +329,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -354,7 +355,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {(item.allergens)}</p>
 							)}
 						</div>
 					))}
@@ -381,7 +382,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {(item.allergens)}</p>
 							)}
 							
 							{item.additive && (
@@ -412,7 +413,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 							)}
 
 							{item.allergens && (
-								<p class="item-allergens">Allergens: {item.allergens}</p>
+								<p class="item-allergens">Allergens: {(item.allergens)}</p>
 							)}
 							
 							{item.additive && (
