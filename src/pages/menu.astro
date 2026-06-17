@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PhotoModal from '../components/PhotoModal.astro';
 import { translateAllergens } from '../utils/allergenTranslator';
 import { mittagsmenü } from '../data/menu/mittagsmenu';
 import { gemüse } from '../data/menu/gemüse';
@@ -19,6 +20,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 ---
 
 <Layout>
+	<PhotoModal />
 	<div id="menu-container">
 		<div id="menu-header">
 			<h1>Menü</h1>
@@ -47,7 +49,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<p class="subtitle">(12:00 - 15:00 Uhr) Zu jedem Gericht: Sauer-Scharf-Suppe als Vorspeise & Reis zum Hauptgang.</p>
 				<div class="menu-grid">
 					{mittagsmenü.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -74,7 +76,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Gemüse (59-73)</h2>
 				<div class="menu-grid">
 					{gemüse.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -101,7 +103,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Dessert (82-85)</h2>
 				<div class="menu-grid">
 					{desert.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -128,7 +130,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Reis & Nudeln (71-81)</h2>
 				<div class="menu-grid">
 					{reiseAndNudeln.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -155,7 +157,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Meeresfrüchte (52-58)</h2>
 				<div class="menu-grid">
 					{meeresfrüchte.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -182,7 +184,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Schwein (41-51)</h2>
 				<div class="menu-grid">
 					{schwein.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -209,7 +211,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Dim Sum (11-20)</h2>
 				<div class="menu-grid">
 					{dimsum.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -236,7 +238,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Vorspeise (1-10)</h2>
 				<div class="menu-grid">
 					{vorspeise.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -263,7 +265,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Suppen (11-20)</h2>
 				<div class="menu-grid">
 					{suppen.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -289,7 +291,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Hühn & Ente (32-39)</h2>
 				<div class="menu-grid">
 					{huhnAndEnte.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -315,7 +317,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Rind (36-39)</h2>
 				<div class="menu-grid">
 					{rind.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -341,7 +343,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Lamm (36-39)</h2>
 				<div class="menu-grid">
 					{lamm.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -368,7 +370,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Getränke</h2>
 				<div class="menu-grid">
 					{getränke.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -399,7 +401,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 				<h2 class="category-title">Bier & Wein</h2>
 				<div class="menu-grid">
 					{bierAndWein.map((item) => (
-						<div class="menu-item">
+						<div class="menu-item" {...(item.photo && { 'data-photo': item.photo })}>
 							<div class="item-header">
 								<span class="item-number">{item.number}</span>
 								<h3 class="item-name">
@@ -523,6 +525,16 @@ import { translateAdditives } from '../utils/additiveTranslator';
 		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 		border-color: #d4af37;
 		transform: translateY(-2px);
+	}
+
+	.menu-item.clickable-item {
+		cursor: pointer;
+	}
+
+	.menu-item.clickable-item:hover {
+		box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+		border-color: #d4af37;
+		transform: translateY(-3px) scale(1.01);
 	}
 
 	.item-header {

@@ -23,11 +23,12 @@ const menuSchema = z.object({
     name_chinese: z.string(),
     name_german: z.string(),
     price: z.string(),
-    // type: z.string(),
     description: z.string(),
     unit: z.string().optional(),
     allergens: z.string().optional(),
     additive: z.string().optional(),
+    // Link of the photo of the menu item
+    photo: z.string().optional(),
 });
 
 const menu = defineCollection({

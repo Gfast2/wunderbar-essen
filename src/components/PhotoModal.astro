@@ -1,0 +1,167 @@
+---
+// PhotoModal.astro - A modal component for displaying menu item photos
+---
+
+<div id="photo-modal" class="photo-modal hidden">
+  <div class="photo-modal-backdrop"></div>
+  <div class="photo-modal-content">
+    <button class="photo-modal-close" aria-label="Close photo modal">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <img id="photo-modal-image" src="" alt="Menu item photo" class="photo-modal-image" />
+  </div>
+</div>
+
+<style>
+  .photo-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .photo-modal.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .photo-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: -1;
+  }
+
+  .photo-modal-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: modalSlideIn 0.3s ease-out;
+  }
+
+  @keyframes modalSlideIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .photo-modal-image {
+    max-width: 100%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .photo-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+  }
+
+  .photo-modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+  }
+
+  .photo-modal-close:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    .photo-modal-close {
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+    }
+
+    .photo-modal-image {
+      border-radius: 4px;
+    }
+  }
+</style>
+
+<script>
+  const photoModal = document.getElementById('photo-modal');
+  const photoModalImage = document.getElementById('photo-modal-image');
+  const closeButton = document.querySelector('.photo-modal-close');
+  const modalBackdrop = document.querySelector('.photo-modal-backdrop');
+
+  // Close modal when close button is clicked
+  closeButton?.addEventListener('click', closePhotoModal);
+
+  // Close modal when backdrop is clicked
+  modalBackdrop?.addEventListener('click', closePhotoModal);
+
+  // Close modal when ESC key is pressed
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !photoModal?.classList.contains('hidden')) {
+      closePhotoModal();
+    }
+  });
+
+  // Function to open modal with photo
+  window.openPhotoModal = (photoUrl: string) => {
+    if (!photoUrl) return;
+    photoModalImage.src = `menu/${photoUrl}`;
+    photoModal?.classList.remove('hidden');
+    document.body.style.overflow = 'hidden'; // Prevent body scroll
+  };
+
+  // Function to close modal
+  function closePhotoModal() {
+    photoModal?.classList.add('hidden');
+    photoModalImage.src = '';
+    document.body.style.overflow = ''; // Restore body scroll
+  }
+
+  // Attach click handlers to menu items with photos
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuItems = document.querySelectorAll('.menu-item');
+    menuItems.forEach((item) => {
+      const photoUrl = item.getAttribute('data-photo');
+      if (photoUrl && photoUrl.trim()) {
+        item.classList.add('clickable-item');
+        item.style.cursor = 'pointer';
+        item.addEventListener('click', () => {
+          (window.openPhotoModal as any)(photoUrl);
+        });
+      }
+    });
+  });
+</script>

@@ -59,6 +59,7 @@ export const gemüse: Menu[] = [
     name_german: "Gebratene Auberginen",
     price: "12.90",
     description: "Auberginen mit Knoblauch und Koriander in Sojasauce",
+    photo: "红烧茄子.jpeg"
   },
   {
     number: "67",
