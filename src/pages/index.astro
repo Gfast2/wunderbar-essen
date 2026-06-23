@@ -8,6 +8,35 @@ import Layout from '../layouts/Layout.astro';
 			<img src="logo-icon.jpg" alt="Wunderbar Logo" style="display: block; margin: 0 auto 30px; max-width: 150px;" />
 			<img src="logo-text.jpg" alt="Wunderbar Logo" style="display: block; margin: 0 auto 30px; max-width: 150px; opacity: 0.5;" />
 		</div>
+		
+		<section class="courses-section">
+			<div class="course-card">
+				<div class="course-image">
+					<img src="menu/红烧茄子.jpeg" alt="Geschmorte Auberginen" />
+					<div class="course-title">Geschmorte Auberginen (红烧茄子)</div>
+					<div class="price"><strong>€99 p.P.</strong></div>
+				</div>
+				<div class="course-details">
+					<h3>Kochkurs</h3>
+					<p class="course-tagline">GENUSS UND KULTUR AUS CHINA!</p>
+					<p class="course-tagline">mit Renjian Zhao</p>
+					<p class="course-tagline-subtitle"><strong>👉 Jetzt anmelden! Begrenzt Plätze - Anmeldung Erforderlich</strong></p>
+					
+					<div class="course-info">
+						<p><strong>Datum:</strong> 18. Juli 2026</p>
+						<p><strong>Zeit:</strong> 14:00 - 17:30 Uhr</p>
+						
+					</div>
+					
+					<div class="course-contact">
+						<p><strong><a href="pdf/Kochkurse_Renjian_Zhao.pdf" target="_blank" no-referrer="true">Flyer Herunterladen</a></strong></p>
+						<p><strong>Telefon:</strong> 03033912911</p>
+						<p><strong>E-Mail:</strong> <a href="mailto:kochkurs.wunderbar@gmail.com">kochkurs.wunderbar@gmail.com</a></p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
 		<section class="contact-section">
 			<div class="info-block">
 				<h2>Öffnungszeiten</h2>
@@ -31,6 +60,8 @@ import Layout from '../layouts/Layout.astro';
 				<p><strong>WeChat ID:</strong> xwwilliam</p>
 			</div>
 		</section>
+		
+		
 	</main>
 
 	<style>
@@ -128,6 +159,110 @@ import Layout from '../layouts/Layout.astro';
 		a:hover {
 			color: #222;
 			text-decoration: underline;
+		}
+
+		.courses-section {
+			margin-bottom: 2em;
+		}
+
+		.course-card {
+			background: white;
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+			overflow: hidden;
+			transition: all 0.3s ease;
+		}
+
+		.course-card:hover {
+			box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+			border-color: #d4af37;
+		}
+
+		.course-image {
+			width: 100%;
+			height: 250px;
+			overflow: hidden;
+			background: #f5f5f5;
+			position: relative;
+		}
+		.price {
+			/* Positions the child relative to the parent edges */
+			top: 115px; 
+			right: 1%;
+			transform: translateX(0) translateY(50%) rotate(-15deg);
+			position: absolute;
+			background-color: #F3E409;
+			border-radius: 50%;
+			/* color: blue; */
+			font-size: 1.5em;
+			padding: .8em;
+		}
+
+		.course-title {
+			position: absolute;
+			background-color: rgba(255, 255, 255, 0.55);
+			font-size: 1.9em;
+			font-style: italic;
+			font-weight: 700;
+			color:#422264;
+			border-radius: 5px;
+			padding: 10px;
+			top: 5px; 
+		}
+
+		.course-image img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			position: absolute;
+		}
+
+		.course-details {
+			padding: 2rem;
+		}
+
+		.course-details h3 {
+			color: #222;
+			margin: 0 0 0.5rem 0;
+			font-size: 1.5em;
+			font-weight: 600;
+		}
+		.course-tagline {
+			color: #666;
+			font-size: 0.95em;
+			margin-block-start: .5rem;
+			margin-bottom: .1rem;
+			font-style: italic;
+		}
+		.course-tagline-subtitle {
+			color: #666;
+			font-size: 0.95em;
+			margin-block-start: .5rem;
+			margin-bottom: .5rem;
+			font-style: italic;
+			text-decoration: green wavy underline 1px;
+		}
+
+		.course-info {
+			margin-bottom: 1.5rem;
+			border-top: 1px solid #e0e0e0;
+			border-bottom: 1px solid #e0e0e0;
+			padding: 1rem 0;
+		}
+
+		.course-info p {
+			margin: 0.5rem 0;
+			color: #555;
+		}
+
+		.course-contact {
+			margin-bottom: 1.5rem;
+		}
+
+		.course-contact p {
+			margin: 0.5rem 0;
+			color: #555;
 		}
 	</style>
 </Layout>
