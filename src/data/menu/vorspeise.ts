@@ -71,5 +71,6 @@ export const vorspeise: Menu[] = [
     name_german: "Hühnerfüsse",
     price: "7.50",
     description: "Mit Schwarze-Bohnen-Paste und Knoblauch",
+    photo: "19凤爪.jpeg"
   },
 ]

@@ -17,6 +17,7 @@ export const dimsum: Menu[] = [
     price: "5.90",
     description: "Maultaschen mit Garnelen, Hackfleisch, Schnittlauch, Knoblauch und Erdnuss, gekocht mit hausgemachter Sosse (4 Stück)",
     allergens: "4,5,9",
+    photo:"2红油水饺.jpeg"
   },
   {
     number: "3",

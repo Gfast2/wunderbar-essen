@@ -51,6 +51,7 @@ export const meeresfrüchte: Menu[] = [
     description: "Mit Sojasauce, Ingwer und Frühlingszwiebeln. (500g-600g)",
     unit: "500g-600g",
     allergens: "8",
+    photo:"57清蒸鲈鱼.jpeg"
   },
   {
     number: "58",
