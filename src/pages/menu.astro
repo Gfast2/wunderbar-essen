@@ -66,6 +66,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -93,6 +94,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -120,6 +122,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -147,6 +150,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -174,6 +178,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -201,6 +206,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -228,6 +234,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -255,6 +262,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -282,6 +290,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -308,6 +317,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -334,6 +344,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -360,6 +371,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.allergens && (
 								<p class="item-allergens">Allergens: {translateAllergens(item.allergens)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -391,6 +403,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.additive && (
 								<p class="item-additive">Additive: {translateAdditives(item.additive)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -422,6 +435,7 @@ import { translateAdditives } from '../utils/additiveTranslator';
 							{item.additive && (
 								<p class="item-additive">Additive: {translateAdditives(item.additive)}</p>
 							)}
+							{item.photo && <span class="photo-ribbon">Foto</span>}
 						</div>
 					))}
 				</div>
@@ -519,6 +533,8 @@ import { translateAdditives } from '../utils/additiveTranslator';
 		padding: 20px;
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 		transition: all 0.3s ease;
+		position: relative;
+		overflow: hidden;
 	}
 
 	.menu-item:hover {
@@ -603,6 +619,24 @@ import { translateAdditives } from '../utils/additiveTranslator';
 		color: #999;
 		font-size: 0.85em;
 		font-style: italic;
+	}
+
+	.photo-ribbon {
+		position: absolute;
+		bottom: 12px;
+		right: -28px;
+		width: 90px;
+		background: #2e7d32;
+		color: white;
+		font-size: 0.7em;
+		font-weight: 700;
+		text-align: center;
+		padding: 4px 0;
+		transform: rotate(-45deg);
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+		letter-spacing: 0.5px;
+		pointer-events: none;
+		box-shadow: 5px 5px 45px -5px rgba(0, 0, 0, 0.6);
 	}
 
 	#menu-footer {
