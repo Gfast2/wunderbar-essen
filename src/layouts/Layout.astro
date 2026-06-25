@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions";
+
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/';
 const isMenu = currentPath.startsWith('/menu');
@@ -6,25 +8,26 @@ const isMenu = currentPath.startsWith('/menu');
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Wunderbar</title>
-	</head>
-	<body>
-		<header>
-			<div class="header-content">
-				<img src="logo-text.png" alt="Wunderbar Logo" class="logo"/>
-				<nav class="menu">
-					<a href="/" class={isHome ? 'is-active' : ''}>Home</a>
-					<a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
-				</nav>
-			</div>
-		</header>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Wunderbar</title>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <img src="logo-text.png" alt="Wunderbar Logo" class="logo"/>
+        <nav class="menu">
+          <a href="/" class={isHome ? 'is-active' : ''}>Home</a>
+		  <a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
+        </nav>
+      </div>
+    </header>
+	<ClientRouter />
+    <slot />
+  </body>
 </html>
 
 <style>
