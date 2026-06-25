@@ -450,39 +450,51 @@ import { translateAdditives } from '../utils/additiveTranslator';
 	</div>
 
 	<script>
-		// Filter tag navigation
-		document.querySelectorAll('.filter-tag').forEach(button => {
-			button.addEventListener('click', function() {
-				const category = this.getAttribute('data-category');
-				
-				// Update active state
-				document.querySelectorAll('.filter-tag').forEach(btn => {
-					btn.classList.remove('active');
+		let scrollHandler: (() => void) | null = null;
+
+		function initMenu() {
+			// Filter tag navigation
+			document.querySelectorAll('.filter-tag').forEach(button => {
+				button.addEventListener('click', function() {
+					const category = this.getAttribute('data-category');
+					
+					// Update active state
+					document.querySelectorAll('.filter-tag').forEach(btn => {
+						btn.classList.remove('active');
+					});
+					this.classList.add('active');
+					
+					// Scroll to section
+					const section = document.getElementById(category);
+					if (section) {
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
 				});
-				this.classList.add('active');
-				
-				// Scroll to section
-				const section = document.getElementById(category);
-				if (section) {
-					section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				}
 			});
-		});
 
-		// Back to top button
-		const backToTopBtn = document.getElementById('back-to-top') as HTMLElement;
-		
-		window.addEventListener('scroll', function() {
-			if (window.pageYOffset > 300) {
-				backToTopBtn.classList.add('visible');
-			} else {
-				backToTopBtn.classList.remove('visible');
+			// Back to top button
+			const backToTopBtn = document.getElementById('back-to-top');
+			if (backToTopBtn) {
+				if (scrollHandler) {
+					window.removeEventListener('scroll', scrollHandler);
+				}
+				scrollHandler = () => {
+					if (window.pageYOffset > 300) {
+						backToTopBtn.classList.add('visible');
+					} else {
+						backToTopBtn.classList.remove('visible');
+					}
+				};
+				window.addEventListener('scroll', scrollHandler);
+
+				backToTopBtn.addEventListener('click', function() {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
 			}
-		});
+		}
 
-		backToTopBtn.addEventListener('click', function() {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
+		// Initialize on page load (initial load and client-side view transitions)
+		document.addEventListener('astro:page-load', initMenu);
 	</script>
 </Layout>
 

@@ -117,51 +117,72 @@
 </style>
 
 <script>
-  const photoModal = document.getElementById('photo-modal');
-  const photoModalImage = document.getElementById('photo-modal-image');
-  const closeButton = document.querySelector('.photo-modal-close');
-  const modalBackdrop = document.querySelector('.photo-modal-backdrop');
-
-  // Close modal when close button is clicked
-  closeButton?.addEventListener('click', closePhotoModal);
-
-  // Close modal when backdrop is clicked
-  modalBackdrop?.addEventListener('click', closePhotoModal);
-
-  // Close modal when ESC key is pressed
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !photoModal?.classList.contains('hidden')) {
-      closePhotoModal();
-    }
-  });
+  let photoModal: HTMLElement | null = null;
+  let photoModalImage: HTMLImageElement | null = null;
+  let closeButton: HTMLElement | null = null;
+  let modalBackdrop: HTMLElement | null = null;
+  let keydownHandler: ((event: KeyboardEvent) => void) | null = null;
 
   // Function to open modal with photo
-  window.openPhotoModal = (photoUrl: string) => {
+  (window as any).openPhotoModal = (photoUrl: string) => {
     if (!photoUrl) return;
-    photoModalImage.src = `menu/${photoUrl}`;
-    photoModal?.classList.remove('hidden');
+    if (photoModalImage) {
+      photoModalImage.src = `menu/${photoUrl}`;
+    }
+    if (photoModal) {
+      photoModal.classList.remove('hidden');
+    }
     document.body.style.overflow = 'hidden'; // Prevent body scroll
   };
 
   // Function to close modal
   function closePhotoModal() {
-    photoModal?.classList.add('hidden');
-    photoModalImage.src = '';
+    if (photoModal) {
+      photoModal.classList.add('hidden');
+    }
+    if (photoModalImage) {
+      photoModalImage.src = '';
+    }
     document.body.style.overflow = ''; // Restore body scroll
   }
 
-  // Attach click handlers to menu items with photos
-  document.addEventListener('DOMContentLoaded', () => {
+  function initPhotoModal() {
+    photoModal = document.getElementById('photo-modal');
+    photoModalImage = document.getElementById('photo-modal-image') as HTMLImageElement;
+    closeButton = document.querySelector('.photo-modal-close');
+    modalBackdrop = document.querySelector('.photo-modal-backdrop');
+
+    // Close modal when close button is clicked
+    closeButton?.addEventListener('click', closePhotoModal);
+
+    // Close modal when backdrop is clicked
+    modalBackdrop?.addEventListener('click', closePhotoModal);
+
+    // Close modal when ESC key is pressed (cleaning up previous keydown listener to avoid duplication)
+    if (keydownHandler) {
+      document.removeEventListener('keydown', keydownHandler);
+    }
+    keydownHandler = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && photoModal && !photoModal.classList.contains('hidden')) {
+        closePhotoModal();
+      }
+    };
+    document.addEventListener('keydown', keydownHandler);
+
+    // Attach click handlers to menu items with photos
     const menuItems = document.querySelectorAll('.menu-item');
     menuItems.forEach((item) => {
       const photoUrl = item.getAttribute('data-photo');
-      if (photoUrl && photoUrl.trim()) {
+      if (item instanceof HTMLElement && photoUrl && photoUrl.trim()) {
         item.classList.add('clickable-item');
         item.style.cursor = 'pointer';
         item.addEventListener('click', () => {
-          (window.openPhotoModal as any)(photoUrl);
+          (window as any).openPhotoModal(photoUrl);
         });
       }
     });
-  });
+  }
+
+  // Initialize on page load (initial load and client-side view transitions)
+  document.addEventListener('astro:page-load', initPhotoModal);
 </script>
