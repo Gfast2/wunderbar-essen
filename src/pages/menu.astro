@@ -139,134 +139,6 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 		letter-spacing: 1px;
 	}
 
-	.subtitle {
-		margin: 10px 0 0 0;
-		color: #666;
-		font-size: 1em;
-		font-weight: 400;
-		margin-bottom: 20px;
-	}
-
-	.menu-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 20px;
-		margin-bottom: 40px;
-	}
-
-	.menu-item {
-		background: white;
-		border: 1px solid #e0e0e0;
-		border-radius: 8px;
-		padding: 20px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-		transition: all 0.3s ease;
-		position: relative;
-		overflow: hidden;
-	}
-
-	.menu-item:hover {
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-		border-color: #d4af37;
-		transform: translateY(-2px);
-	}
-
-	.menu-item.clickable-item {
-		cursor: pointer;
-	}
-
-	.menu-item.clickable-item:hover {
-		box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
-		border-color: #d4af37;
-		transform: translateY(-3px) scale(1.01);
-	}
-
-	.item-header {
-		display: flex;
-		align-items: flex-start;
-		gap: 12px;
-		margin-bottom: 12px;
-	}
-
-	.item-number {
-		background: #d4af37;
-		color: white;
-		padding: 6px 12px;
-		border-radius: 4px;
-		font-weight: 700;
-		font-size: 0.9em;
-		flex-shrink: 0;
-		min-width: 40px;
-		text-align: center;
-	}
-
-	.item-name {
-		margin: 0;
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-	}
-
-	.name-german {
-		display: block;
-		font-size: 1.1em;
-		color: #222;
-		font-weight: 600;
-	}
-
-	.name-chinese {
-		display: block;
-		font-size: 1em;
-		color: #555;
-		font-weight: 400;
-	}
-
-	.item-price {
-		font-size: 1.3em;
-		font-weight: 700;
-		color: #d4af37;
-		flex-shrink: 0;
-	}
-
-	.item-description {
-		margin: 12px 0 8px 0;
-		color: #555;
-		font-size: 0.9em;
-		line-height: 1.5;
-	}
-
-	.item-allergens {
-		margin: 8px 0 0 0;
-		color: #999;
-		font-size: 0.85em;
-		font-style: italic;
-	}
-	.item-additive {
-		margin: 8px 0 0 0;
-		color: #999;
-		font-size: 0.85em;
-		font-style: italic;
-	}
-
-	.photo-ribbon {
-		position: absolute;
-		bottom: 12px;
-		right: -28px;
-		width: 90px;
-		background: #2e7d32;
-		color: white;
-		font-size: 0.7em;
-		font-weight: 700;
-		text-align: center;
-		padding: 4px 0;
-		transform: rotate(-45deg);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-		letter-spacing: 0.5px;
-		pointer-events: none;
-		box-shadow: 5px 5px 45px -5px rgba(0, 0, 0, 0.6);
-	}
-
 	#menu-footer {
 		text-align: center;
 		padding-top: 30px;
@@ -310,20 +182,6 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 	}
 
-	.category-section {
-		margin-bottom: 60px;
-		scroll-margin-top: 40px;
-	}
-
-	.category-title {
-		font-size: 1.8em;
-		color: #222;
-		font-weight: 700;
-		margin: 0 0 30px 0;
-		padding-bottom: 15px;
-		border-bottom: 2px solid #d4af37;
-	}
-
 	#back-to-top {
 		position: fixed;
 		bottom: 30px;
@@ -364,19 +222,6 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 
 		#menu-header h1 {
 			font-size: 2em;
-		}
-
-		.menu-grid {
-			grid-template-columns: 1fr;
-			gap: 15px;
-		}
-
-		.item-header {
-			flex-wrap: wrap;
-		}
-
-		.item-name {
-			flex-basis: 100%;
 		}
 	}
 </style>
