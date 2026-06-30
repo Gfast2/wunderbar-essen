@@ -71,7 +71,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 		function initMenu() {
 			// Filter tag navigation
 			document.querySelectorAll('.filter-tag').forEach(button => {
-				button.addEventListener('click', function() {
+				button.addEventListener('click', function(this: HTMLButtonElement) {
 					const category = this.getAttribute('data-category');
 					
 					// Update active state
@@ -81,7 +81,7 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 					this.classList.add('active');
 					
 					// Scroll to section
-					const section = document.getElementById(category);
+					const section = !!category && document.getElementById(category);
 					if (section) {
 						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
 					}
