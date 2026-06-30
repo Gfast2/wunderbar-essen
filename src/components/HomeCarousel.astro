@@ -1,0 +1,137 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Read all images from the public/home-page-carousel directory at build time
+const carouselDir = path.join(process.cwd(), 'public', 'home-page-carousel');
+let images: string[] = [];
+
+try {
+  if (fs.existsSync(carouselDir)) {
+    images = fs.readdirSync(carouselDir)
+      .filter(file => /\.(jpe?g|png|gif|webp)$/i.test(file))
+      .map(file => `/home-page-carousel/${file}`);
+  }
+} catch (e) {
+  console.error("Failed to read carousel images:", e);
+}
+---
+
+<div class="carousel-container">
+  <!-- Slide 0: The original logo slide -->
+  <div class="carousel-slide active">
+    <div class="logo-slide-content">
+      <img src="logo-icon.jpg" alt="Wunderbar Logo Icon" class="logo-icon" />
+      <img src="logo-text.jpg" alt="Wunderbar Logo Text" class="logo-text" />
+    </div>
+  </div>
+
+  <!-- Slides 1..N: Carousel images -->
+  {images.map((imgSrc, index) => (
+    <div class="carousel-slide">
+      <img src={imgSrc} alt={`Wunderbar Impression ${index + 1}`} class="carousel-image" loading="lazy" />
+    </div>
+  ))}
+</div>
+
+<style>
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    margin: 0 auto 30px;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+  }
+
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .carousel-slide.active {
+    opacity: 1;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  /* Logo slide styling matching original look */
+  .logo-slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    padding: 20px;
+  }
+
+  .logo-icon {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+  }
+
+  .logo-text {
+    display: block;
+    margin: 0 auto;
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+    opacity: 0.5;
+  }
+
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<script>
+  function setupCarousel() {
+    const container = document.querySelector('.carousel-container');
+    if (!container) return;
+
+    const slides = container.querySelectorAll('.carousel-slide');
+    if (slides.length <= 1) return;
+
+    let currentSlide = 0;
+    let intervalId: ReturnType<typeof setInterval>;
+    
+    function startInterval() {
+      return setInterval(() => {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }, 4500); // Cycle every 4.5 seconds for comfortable viewing
+    }
+
+    intervalId = startInterval();
+
+    // Clean up interval if element is removed (good practice with view transitions)
+    document.addEventListener('astro:after-swap', () => clearInterval(intervalId), { once: true });
+  }
+
+  // Setup on load
+  setupCarousel();
+
+  // Support view transitions
+  document.addEventListener('astro:page-load', setupCarousel);
+</script>
