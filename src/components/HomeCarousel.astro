@@ -32,6 +32,26 @@ try {
       <img src={imgSrc} alt={`Wunderbar Impression ${index + 1}`} class="carousel-image" loading="lazy" />
     </div>
   ))}
+
+  <!-- Navigation Arrows -->
+  <button class="carousel-btn prev-btn" aria-label="Vorheriges Bild">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" fill="currentColor"></path>
+    </svg>
+  </button>
+  <button class="carousel-btn next-btn" aria-label="Nächstes Bild">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" fill="currentColor"></path>
+    </svg>
+  </button>
+
+  <!-- Indicator Dots -->
+  <div class="carousel-dots">
+    <button class="carousel-dot active" aria-label="Gehe zu Dia 1"></button>
+    {images.map((_, index) => (
+      <button class="carousel-dot" aria-label={`Gehe zu Dia ${index + 2}`}></button>
+    ))}
+  </div>
 </div>
 
 <style>
@@ -102,6 +122,75 @@ try {
     height: 100%;
     object-fit: cover;
   }
+
+  /* Navigation Buttons */
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+
+  .carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    color: #d4af37;
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .prev-btn {
+    left: 16px;
+  }
+
+  .next-btn {
+    right: 16px;
+  }
+
+  /* Indicator Dots */
+  .carousel-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .carousel-dot.active {
+    background: #d4af37;
+    transform: scale(1.1);
+    width: 22px;
+    border-radius: 5px;
+  }
+
+  .carousel-dot:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
 </style>
 
 <script>
@@ -112,18 +201,65 @@ try {
     const slides = container.querySelectorAll('.carousel-slide');
     if (slides.length <= 1) return;
 
+    const prevBtn = container.querySelector('.prev-btn');
+    const nextBtn = container.querySelector('.next-btn');
+    const dots = container.querySelectorAll('.carousel-dot');
+
     let currentSlide = 0;
     let intervalId: ReturnType<typeof setInterval>;
-    
-    function startInterval() {
-      return setInterval(() => {
-        slides[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add('active');
-      }, 4500); // Cycle every 4.5 seconds for comfortable viewing
+
+    function goToSlide(index: number) {
+      slides[currentSlide].classList.remove('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.remove('active');
+
+      currentSlide = (index + slides.length) % slides.length;
+
+      slides[currentSlide].classList.add('active');
+      if (dots[currentSlide]) dots[currentSlide].classList.add('active');
     }
 
+    function nextSlide() {
+      goToSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      goToSlide(currentSlide - 1);
+    }
+
+    function startInterval() {
+      return setInterval(nextSlide, 4500); // Cycle every 4.5 seconds
+    }
+
+    function resetInterval() {
+      clearInterval(intervalId);
+      intervalId = startInterval();
+    }
+
+    // Set up auto-cycle
     intervalId = startInterval();
+
+    // Event listeners for buttons
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetInterval();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetInterval();
+      });
+    }
+
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+        resetInterval();
+      });
+    });
 
     // Clean up interval if element is removed (good practice with view transitions)
     document.addEventListener('astro:after-swap', () => clearInterval(intervalId), { once: true });
