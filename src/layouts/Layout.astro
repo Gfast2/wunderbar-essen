@@ -1,79 +1,145 @@
 ---
 import { ClientRouter } from "astro:transitions";
 
+interface Props {
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+}
+
+const {
+  title = 'WUNDERBAR ESSEN | Authentisches chinesisches Restaurant in Berlin',
+  description = 'Wunderbar Essen in Berlin bietet authentische chinesische Küche, Dim Sum, Mittagsmenü, private Reservierungen und Kochkurse mit Renjian Zhao.',
+  url = 'https://www.wunderbar-essen.de',
+  image = '/logo-text.png',
+} = Astro.props as Props;
+
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/';
 const isMenu = currentPath.startsWith('/menu');
+const canonicalRoot = url.endsWith('/') && url.length > 1 ? url.slice(0, -1) : url;
+const canonicalUrl = currentPath === '/' ? canonicalRoot : `${canonicalRoot}${currentPath}`;
+
+const schema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Restaurant',
+  name: 'WUNDERBAR ESSEN',
+  description,
+  image,
+  url: canonicalRoot,
+  mainEntityOfPage: canonicalUrl,
+  telephone: '+49 30 33912911',
+  email: 'kochkurs.wunderbar@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Bernhardstrasse 12',
+    addressLocality: 'Berlin',
+    postalCode: '10715',
+    addressCountry: 'DE',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '12:00',
+      closes: '15:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '17:00',
+      closes: '22:00',
+    },
+  ],
+  servesCuisine: ['Chinese', 'Asian', 'Dim Sum'],
+  priceRange: '€€',
+  sameAs: [canonicalRoot],
+});
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>Wunderbar</title>
+    <meta name="robots" content="index,follow" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content="Wunderbar Restaurant in Berlin" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    <slot name="head" />
+    <script type="application/ld+json">{schema}</script>
   </head>
   <body>
     <header>
       <div class="header-content">
-        <img src="logo-text.png" alt="Wunderbar Logo" class="logo"/>
-        <nav class="menu">
+        <img src="logo-text.png" alt="Wunderbar Logo" class="logo" />
+        <nav class="menu" aria-label="Hauptnavigation">
           <a href="/" class={isHome ? 'is-active' : ''}>Home</a>
-		  <a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
+          <a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
         </nav>
       </div>
     </header>
-	<ClientRouter />
+    <ClientRouter />
     <slot />
   </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-	header {
-		background-color: #d4af37;
-		padding: 1rem 2rem;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
+  header {
+    background-color: #d4af37;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-	.header-content {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-	.logo {
-		height: 25px;
-	}
+  .logo {
+    height: 25px;
+  }
 
-	.menu {
-		display: flex;
-		gap: 2rem;
-	}
+  .menu {
+    display: flex;
+    gap: 2rem;
+  }
 
-	.menu a {
-		text-decoration: none;
-		color: #333;
-		font-weight: 500;
-		transition: color 0.3s ease;
-	}
+  .menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
 
-	.menu a:hover {
-		color: #666;
-	}
+  .menu a:hover {
+    color: #666;
+  }
 
-	.menu a.is-active {
-		font-weight: bold;
-		text-decoration: underline overline #ff3028 3px;
-	}
-</style>
+  .menu a.is-active {
+    font-weight: bold;
+    text-decoration: underline overline #ff3028 3px;
+  }

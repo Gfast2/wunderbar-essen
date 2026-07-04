@@ -16,13 +16,19 @@ import { rind } from '../data/menu/rind';
 import { lamm } from '../data/menu/lamm';
 import { getränke } from '../data/menu/getränke';
 import { bierAndWein } from '../data/menu/bierAndWein';
+
+const pageTitle = 'WUNDERBAR ESSEN Menü – Chinesische Küche in Berlin';
+const pageDescription = 'Entdecken das WUNDERBAR ESSEN Menü in Berlin: Dim Sum, Suppen, Reisgerichte, Fleischspezialitäten und Getränke für authentische chinesische Geschmackserlebnisse.';
+const pageUrl = 'https://www.wunderbar-essen.de/menu';
+const pageImage = '/logo-text.png';
 ---
 
-<Layout>
+<Layout title={pageTitle} description={pageDescription} url={pageUrl} image={pageImage}>
 	<PhotoModal />
 	<div id="menu-container">
 		<div id="menu-header">
 			<h1>Menü</h1>
+			<p class="menu-intro">Unser Menü in Berlin bietet eine Auswahl an Dim Sum, klassischen Suppen, Reis & Nudelgerichten sowie frischen Gemüse- und Fleischspezialitäten. Wählen Sie direkt die passende Kategorie für Ihr Geschmackserlebnis.</p>
 			<div id="filter-tags">
 				<button class="filter-tag active" data-category="mittagsmenu">Mittagsmenü</button>
 				<button class="filter-tag" data-category="gemuese">Gemüse</button>
@@ -115,113 +121,113 @@ import { bierAndWein } from '../data/menu/bierAndWein';
 </Layout>
 
 <style>
-	#menu-container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 40px 20px;
-		background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%);
-		min-height: 100vh;
-	}
+#menu-container {
+	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 40px 20px;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%);
+	min-height: 100vh;
+}
 
-	#menu-header {
-		text-align: center;
-		margin-bottom: 40px;
-		border-bottom: 3px solid #d4af37;
-		padding-bottom: 20px;
+#menu-header {
+	text-align: center;
+	margin-bottom: 40px;
+	border-bottom: 3px solid #d4af37;
+	padding-bottom: 20px;
+}
+
+#menu-header h1 {
+	margin: 0;
+	font-size: 2.5em;
+	color: #222;
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+#menu-footer {
+	text-align: center;
+	padding-top: 30px;
+	border-top: 2px solid #d4af37;
+	color: #666;
+	font-size: 0.95em;
+}
+
+#menu-footer p {
+	margin: 8px 0;
+}
+
+#filter-tags {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	margin-top: 20px;
+	flex-wrap: wrap;
+}
+
+.filter-tag {
+	padding: 10px 24px;
+	border: 2px solid #d4af37;
+	background: transparent;
+	color: #d4af37;
+	font-size: 1em;
+	font-weight: 600;
+	border-radius: 24px;
+	cursor: pointer;
+	transition: all 0.3s ease;
+}
+
+.filter-tag:hover {
+	background: rgba(212, 175, 55, 0.1);
+	transform: scale(1.05);
+}
+
+.filter-tag.active {
+	background: #d4af37;
+	color: white;
+	box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+#back-to-top {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 50px;
+	height: 50px;
+	background: #d4af37;
+	color: white;
+	border: none;
+	border-radius: 50%;
+	font-size: 1.5em;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+	z-index: 100;
+}
+
+#back-to-top:hover {
+	background: #c99a2a;
+	box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
+	transform: translateY(-3px);
+}
+
+#back-to-top.visible {
+	opacity: 1;
+	visibility: visible;
+}
+
+@media (max-width: 768px) {
+	#menu-container {
+		padding: 20px 15px;
 	}
 
 	#menu-header h1 {
-		margin: 0;
-		font-size: 2.5em;
-		color: #222;
-		font-weight: 700;
-		letter-spacing: 1px;
+		font-size: 2em;
 	}
-
-	#menu-footer {
-		text-align: center;
-		padding-top: 30px;
-		border-top: 2px solid #d4af37;
-		color: #666;
-		font-size: 0.95em;
-	}
-
-	#menu-footer p {
-		margin: 8px 0;
-	}
-
-	#filter-tags {
-		display: flex;
-		justify-content: center;
-		gap: 12px;
-		margin-top: 20px;
-		flex-wrap: wrap;
-	}
-
-	.filter-tag {
-		padding: 10px 24px;
-		border: 2px solid #d4af37;
-		background: transparent;
-		color: #d4af37;
-		font-size: 1em;
-		font-weight: 600;
-		border-radius: 24px;
-		cursor: pointer;
-		transition: all 0.3s ease;
-	}
-
-	.filter-tag:hover {
-		background: rgba(212, 175, 55, 0.1);
-		transform: scale(1.05);
-	}
-
-	.filter-tag.active {
-		background: #d4af37;
-		color: white;
-		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-	}
-
-	#back-to-top {
-		position: fixed;
-		bottom: 30px;
-		right: 30px;
-		width: 50px;
-		height: 50px;
-		background: #d4af37;
-		color: white;
-		border: none;
-		border-radius: 50%;
-		font-size: 1.5em;
-		cursor: pointer;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-		visibility: hidden;
-		transition: all 0.3s ease;
-		box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-		z-index: 100;
-	}
-
-	#back-to-top:hover {
-		background: #c99a2a;
-		box-shadow: 0 6px 16px rgba(212, 175, 55, 0.4);
-		transform: translateY(-3px);
-	}
-
-	#back-to-top.visible {
-		opacity: 1;
-		visibility: visible;
-	}
-
-	@media (max-width: 768px) {
-		#menu-container {
-			padding: 20px 15px;
-		}
-
-		#menu-header h1 {
-			font-size: 2em;
-		}
-	}
+}
 </style>

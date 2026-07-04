@@ -1,272 +1,293 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import HomeCarousel from '../components/HomeCarousel.astro';
+
+const pageTitle = 'WUNDERBAR ESSEN – Authentische chinesische Küche & Kochkurse in Berlin';
+const pageDescription = 'Entdecken Sie WUNDERBAR ESSEN in Berlin: authentische chinesische Gerichte, Dim Sum, Kochkurse, private Reservierungen und traditionelle Geschmackserlebnisse.';
+const pageUrl = 'https://www.wunderbar-essen.de';
+const pageImage = '/logo-text.png';
 ---
 
-<Layout>
-	<main class="container">
-		<HomeCarousel />
-		
-		<section class="courses-section">
-			<div class="course-card">
-				<div class="course-image">
-					<img src="menu/66红烧茄子.jpeg" alt="Geschmorte Auberginen" />
-					<div class="course-title">Geschmorte Auberginen (红烧茄子)</div>
-					<div class="price"><strong>€99 p.P.</strong></div>
-				</div>
-				<div class="course-details">
-					<h3>Kochkurs</h3>
-					<p class="course-tagline">GENUSS UND KULTUR AUS CHINA!</p>
-					<p class="course-tagline">mit Renjian Zhao</p>
-					<p class="course-tagline-subtitle"><strong>👉 Jetzt anmelden! Begrenzt Plätze - Anmeldung Erforderlich</strong></p>
-					
-					<div class="course-info">
-						<p><strong>Datum:</strong> 18. Juli 2026</p>
-						<p><strong>Zeit:</strong> 14:00 - 17:30 Uhr</p>
-						
-					</div>
-					
-					<div class="course-contact">
-						<p><strong><a href="pdf/Kochkurse_Renjian_Zhao.pdf" target="_blank" no-referrer="true">Flyer Herunterladen</a></strong></p>
-						<p><strong>Telefon:</strong> 03033912911</p>
-						<p><strong>E-Mail:</strong> <a href="mailto:kochkurs.wunderbar@gmail.com">kochkurs.wunderbar@gmail.com</a></p>
-					</div>
-				</div>
-			</div>
-		</section>
-		
-		<section class="contact-section">
-			<div class="info-block">
-				<h2>Öffnungszeiten</h2>
-				<div class="hours">
-					<p><strong>Montag – Freitag</strong></p>
-					<p>12:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</p>
-				</div>
-				<div class="hours">
-					<p><strong>Samstag & Sonntag</strong></p>
-					<p>Nur private Reservierung</p>
-				</div>
-			</div>
-			
-			<div class="info-block">
-				<h2>Kontaktinformationen</h2>
-				<p><strong>Inhaber:</strong> Renjian Zhao</p>
-				<p><strong>Adresse:</strong> Bernhardstrasse 12, 10715 Berlin</p>
-				<p><strong>Telefon:</strong> 03033912911</p>
-				<p><strong>Mobil:</strong> 017670981275</p>
-				<p><strong>Website:</strong> <a href="https://www.wunderbar-essen.de/">https://www.wunderbar-essen.de/</a></p>
-				<p><strong>WeChat ID:</strong> xwwilliam</p>
-				<div class="map-wrapper">
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.0455384908246!2d13.327958415805924!3d52.47831117980627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a85063758ff469%3A0xfd08ae4e699bbc26!2sBernhardstra%C3%9Fe%2012%2C%2010715%20Berlin!5e0!3m2!1sde!2sde!4v1603617119314!5m2!1sde!2sde" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-				</div>
-			</div>
-		</section>
-		
-	</main>
+<Layout title={pageTitle} description={pageDescription} url={pageUrl} image={pageImage}>
+  <main class="container">
+    <h1>WUNDERBAR ESSEN – Authentische chinesische Küche in Berlin</h1>
+
+    <section class="intro-section">
+      <h2>Einzigartige Geschmackserlebnisse</h2>
+      <p>WUNDERBAR ESSEN verbindet traditionelle chinesische Technik mit frischen Zutaten aus Berlin. Unser Menü bietet Dim Sum, Wokgerichte, vegetarische Spezialitäten und regionale Aromen aus dem Reich der Mitte.</p>
+      <p>Ob Familienfeier, Geschäftstermin oder private Reservierung: Bei uns entdecken Gäste die Vielfalt chinesischer Küche in entspannter Atmosphäre.</p>
+    </section>
+
+    <HomeCarousel />
+
+    <section class="courses-section">
+      <div class="course-card">
+        <div class="course-image">
+          <img src="menu/66红烧茄子.jpeg" alt="Geschmorte Auberginen, authentisches chinesisches Gericht" />
+          <div class="course-title">Geschmorte Auberginen (红烧茄子)</div>
+          <div class="price"><strong>€99 p.P.</strong></div>
+        </div>
+        <div class="course-details">
+          <h3>Kochkurs</h3>
+          <p class="course-tagline">Genuss und Kultur aus China</p>
+          <p class="course-tagline">mit Renjian Zhao</p>
+          <p class="course-tagline-subtitle"><strong>👉 Jetzt anmelden! Begrenzt Plätze - Anmeldung erforderlich</strong></p>
+
+          <div class="course-info">
+            <p><strong>Datum:</strong> 18. Juli 2026</p>
+            <p><strong>Zeit:</strong> 14:00 - 17:30 Uhr</p>
+          </div>
+
+          <div class="course-contact">
+            <p><strong><a href="pdf/Kochkurse_Renjian_Zhao.pdf" target="_blank" rel="noreferrer noopener">Flyer herunterladen</a></strong></p>
+            <p><strong>Telefon:</strong> 03033912911</p>
+            <p><strong>E-Mail:</strong> <a href="mailto:kochkurs.wunderbar@gmail.com">kochkurs.wunderbar@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="info-block">
+        <h2>Öffnungszeiten</h2>
+        <div class="hours">
+          <p><strong>Montag – Freitag</strong></p>
+          <p>12:00 – 15:00 Uhr & 17:00 – 22:00 Uhr</p>
+        </div>
+        <div class="hours">
+          <p><strong>Samstag & Sonntag</strong></p>
+          <p>Nur private Reservierung</p>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <h2>Kontaktinformationen</h2>
+        <p><strong>Inhaber:</strong> Renjian Zhao</p>
+        <p><strong>Adresse:</strong> Bernhardstrasse 12, 10715 Berlin</p>
+        <p><strong>Telefon:</strong> 03033912911</p>
+        <p><strong>Mobil:</strong> 017670981275</p>
+        <p><strong>Website:</strong> <a href="https://www.wunderbar-essen.de/">https://www.wunderbar-essen.de/</a></p>
+        <p><strong>WeChat ID:</strong> xwwilliam</p>
+        <div class="map-wrapper">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2430.0455384908246!2d13.327958415805924!3d52.47831117980627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a85063758ff469%3A0xfd08ae4e699bbc26!2sBernhardstra%C3%9Fe%2012%2C%2010715%20Berlin!5e0!3m2!1sde!2sde!4v1603617119314!5m2!1sde!2sde" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </Layout>
 
 <style>
-	.container {
-		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		max-width: 900px;
-		margin: 0 auto;
-		padding: 40px 20px;
-		background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%);
-		min-height: 100vh;
-	}
+  .container {
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 240, 240, 0.98) 100%);
+    min-height: 100vh;
+  }
 
-	h1 {
-		text-align: center;
-		color: #222;
-		margin-bottom: 2.5rem;
-		font-size: 2.5em;
-		font-weight: 700;
-		letter-spacing: 1px;
-		border-bottom: 3px solid #d4af37;
-		padding-bottom: 20px;
-	}
+  h1 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 2.5rem;
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #d4af37;
+    padding-bottom: 20px;
+  }
 
-	h2 {
-		color: #222;
-		border-bottom: 2px solid #d4af37;
-		padding-bottom: 0.75rem;
-		margin-bottom: 1.5rem;
-		font-size: 1.3em;
-		font-weight: 600;
-	}
+  h2 {
+    color: #222;
+    border-bottom: 2px solid #d4af37;
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3em;
+    font-weight: 600;
+  }
 
-	.contact-section {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
+  .intro-section {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem 1.25rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+  }
 
-	.info-block {
-		background: white;
-		border: 1px solid #e0e0e0;
-		margin-bottom: 0;
-		padding: 2rem;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-		transition: all 0.3s ease;
-	}
+  .intro-section p {
+    margin: 1rem 0;
+    line-height: 1.75;
+    color: #555;
+    font-size: 1rem;
+  }
 
-	.info-block:hover {
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-		border-color: #d4af37;
-		transform: translateY(-2px);
-	}
+  .contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-	.info-block p {
-		margin: 0.75rem 0;
-		line-height: 1.7;
-		color: #555;
-		font-size: 1em;
-	}
+  .info-block {
+    background: white;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 0;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
 
-	.info-block strong {
-		color: #222;
-		font-weight: 600;
-	}
+  .info-block:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-color: #d4af37;
+    transform: translateY(-2px);
+  }
 
-	.hours {
-		margin-bottom: 1.5rem;
-		padding-bottom: 1rem;
-	}
+  .info-block p {
+    margin: 0.75rem 0;
+    line-height: 1.7;
+    color: #555;
+    font-size: 1em;
+  }
 
-	.hours:last-child {
-		margin-bottom: 0;
-		padding-bottom: 0;
-	}
+  .info-block strong {
+    color: #222;
+    font-weight: 600;
+  }
 
-	.hours p {
-		margin: 0.4rem 0;
-		color: #555;
-	}
+  .hours {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding-top: 1rem;
+  }
 
-	.hours p:first-child {
-		font-weight: 600;
-		color: #222;
-		font-size: 1.05em;
-	}
+  .hours:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
-	a {
-		color: #d4af37;
-		text-decoration: none;
-		font-weight: 500;
-		transition: all 0.3s ease;
-	}
+  .hours p {
+    margin: 0.4rem 0;
+    color: #555;
+  }
 
-	a:hover {
-		color: #222;
-		text-decoration: underline;
-	}
-	.map-wrapper {
-		border-radius: 4px;
-		border: 1px solid #e0e0e0;
-	}
+  .hours p:first-child {
+    font-weight: 600;
+    color: #222;
+    font-size: 1.05em;
+  }
 
-	.courses-section {
-		margin-bottom: 2em;
-	}
+  a {
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
 
-	.course-card {
-		background: white;
-		border: 1px solid #e0e0e0;
-		border-radius: 8px;
-		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-		overflow: hidden;
-		transition: all 0.3s ease;
-	}
+  a:hover {
+    color: #222;
+    text-decoration: underline;
+  }
 
-	.course-card:hover {
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-		border-color: #d4af37;
-	}
+  .map-wrapper {
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+  }
 
-	.course-image {
-		width: 100%;
-		height: 250px;
-		overflow: hidden;
-		background: #f5f5f5;
-		position: relative;
-	}
-	.price {
-		/* Positions the child relative to the parent edges */
-		top: 115px; 
-		right: 1%;
-		transform: translateX(0) translateY(50%) rotate(-15deg);
-		position: absolute;
-		background-color: #F3E409;
-		border-radius: 50%;
-		/* color: blue; */
-		font-size: 1.5em;
-		padding: .8em;
-	}
+  .courses-section {
+    margin-bottom: 2em;
+  }
 
-	.course-title {
-		position: absolute;
-		background-color: rgba(255, 255, 255, 0.55);
-		font-size: 1.9em;
-		font-style: italic;
-		font-weight: 700;
-		color:#422264;
-		border-radius: 5px;
-		padding: 10px;
-		top: 5px; 
-	}
+  .course-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
 
-	.course-image img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		position: absolute;
-	}
+  .course-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-color: #d4af37;
+  }
 
-	.course-details {
-		padding: 2rem;
-	}
+  .course-image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #f5f5f5;
+    position: relative;
+  }
 
-	.course-details h3 {
-		color: #222;
-		margin: 0 0 0.5rem 0;
-		font-size: 1.5em;
-		font-weight: 600;
-	}
-	.course-tagline {
-		color: #666;
-		font-size: 0.95em;
-		margin-block-start: .5rem;
-		margin-bottom: .1rem;
-		font-style: italic;
-	}
-	.course-tagline-subtitle {
-		color: #666;
-		font-size: 0.95em;
-		margin-block-start: .5rem;
-		margin-bottom: .5rem;
-		font-style: italic;
-		text-decoration: green wavy underline 1px;
-	}
+  .price {
+    top: 115px;
+    right: 1%;
+    transform: translateX(0) translateY(50%) rotate(-15deg);
+    position: absolute;
+    background-color: #f3e409;
+    border-radius: 50%;
+    font-size: 1.5em;
+    padding: 0.8em;
+  }
 
-	.course-info {
-		margin-bottom: 1.5rem;
-		border-top: 1px solid #e0e0e0;
-		border-bottom: 1px solid #e0e0e0;
-		padding: 1rem 0;
-	}
+  .course-title {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.55);
+    font-size: 1.9em;
+    font-style: italic;
+    font-weight: 700;
+    color: #422264;
+    border-radius: 5px;
+    padding: 10px;
+    top: 5px;
+  }
 
-	.course-info p {
-		margin: 0.5rem 0;
-		color: #555;
-	}
+  .course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
 
-	.course-contact {
-		margin-bottom: 1.5rem;
-	}
+  .course-details {
+    padding: 2rem;
+  }
 
-	.course-contact p {
-		margin: 0.5rem 0;
-		color: #555;
-	}
+  .course-details h3 {
+    color: #222;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5em;
+    font-weight: 600;
+  }
+
+  .course-tagline,
+  .course-tagline-subtitle {
+    color: #666;
+    font-size: 0.95em;
+    margin-block-start: 0.5rem;
+    margin-bottom: 0.1rem;
+    font-style: italic;
+  }
+
+  .course-tagline-subtitle {
+    margin-bottom: 0.5rem;
+    text-decoration: green wavy underline 1px;
+  }
+
+  .course-info {
+    margin-bottom: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 1rem 0;
+  }
+
+  .course-info p,
+  .course-contact p {
+    margin: 0.5rem 0;
+    color: #555;
+  }
 </style>
