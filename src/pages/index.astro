@@ -10,15 +10,14 @@ const pageImage = '/logo-text.png';
 
 <Layout title={pageTitle} description={pageDescription} url={pageUrl} image={pageImage}>
   <main class="container">
-    <h1>WUNDERBAR ESSEN – Authentische chinesische Küche in Berlin</h1>
-
     <section class="intro-section">
-      <h2>Einzigartige Geschmackserlebnisse</h2>
-      <p>WUNDERBAR ESSEN verbindet traditionelle chinesische Technik mit frischen Zutaten aus Berlin. Unser Menü bietet Dim Sum, Wokgerichte, vegetarische Spezialitäten und regionale Aromen aus dem Reich der Mitte.</p>
-      <p>Ob Familienfeier, Geschäftstermin oder private Reservierung: Bei uns entdecken Gäste die Vielfalt chinesischer Küche in entspannter Atmosphäre.</p>
+	  <HomeCarousel />
+	  <div id="description">
+		<h1>Authentische chinesische Küche</h1>
+		<p>WUNDERBAR ESSEN verbindet traditionelle chinesische Technik mit frischen Zutaten aus Berlin. Unser Menü bietet Dim Sum, Wokgerichte, vegetarische Spezialitäten und regionale Aromen aus dem Reich der Mitte.</p>
+		<p>Ob Familienfeier, Geschäftstermin oder private Reservierung: Bei uns entdecken Gäste die Vielfalt chinesischer Küche in entspannter Atmosphäre.</p>
+	  </div>
     </section>
-
-    <HomeCarousel />
 
     <section class="courses-section">
       <div class="course-card">
@@ -90,7 +89,7 @@ const pageImage = '/logo-text.png';
   h1 {
     text-align: center;
     color: #222;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     font-size: 2.5em;
     font-weight: 700;
     letter-spacing: 1px;
@@ -108,18 +107,31 @@ const pageImage = '/logo-text.png';
   }
 
   .intro-section {
-    margin-bottom: 2.5rem;
-    padding: 1.5rem 1.25rem;
+    margin-bottom: 2rem;
     background: white;
+    border: 1px solid #e0e0e0;
     border-radius: 10px;
-    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+  }
+
+  .intro-section:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-color: #d4af37;
+    transform: translateY(-2px);
+  }
+
+  .intro-section #description {
+    padding: 1.5rem 1.25rem;
+    padding-top: unset;
   }
 
   .intro-section p {
-    margin: 1rem 0;
+    margin-bottom: 1rem;
     line-height: 1.75;
     color: #555;
     font-size: 1rem;
+	
   }
 
   .contact-section {
