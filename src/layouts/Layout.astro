@@ -1,5 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title?: string;
@@ -62,6 +63,7 @@ const schema = JSON.stringify({
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
+    <Analytics />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
