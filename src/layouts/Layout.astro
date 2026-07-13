@@ -82,7 +82,8 @@ const schema = JSON.stringify({
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
     <slot name="head" />
-    <script type="application/ld+json">{schema}</script>
+    <script type="application/ld+json" set:html={schema} />
+    <ClientRouter />
   </head>
   <body>
     <header>
@@ -94,7 +95,6 @@ const schema = JSON.stringify({
         </nav>
       </div>
     </header>
-    <ClientRouter />
     <slot />
   </body>
 </html>
@@ -146,3 +146,4 @@ const schema = JSON.stringify({
     font-weight: bold;
     text-decoration: underline overline #ff3028 3px;
   }
+</style>
