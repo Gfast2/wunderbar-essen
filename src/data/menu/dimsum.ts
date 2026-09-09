@@ -53,6 +53,7 @@ export const dimsum: Menu[] = [
     price: "5.50",
     description: "Shumai mit Klebreis und Hackfleischfüllung (4 Stück)",
     allergens: "4",
+    photo: "6糯米烧麦.avif"
   },
   {
     number: "7",

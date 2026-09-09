@@ -32,6 +32,7 @@ export const schwein: Menu[] = [
     name_german: "Gekochter Schweinbauch",
     price: "14.90",
     description: "Danach gebraten mit pikanter Sichuan-Sauce, Peperoni und Knoblauch, scharf",
+    photo: "45回锅肉.avif"
   },
   {
     number: "47",

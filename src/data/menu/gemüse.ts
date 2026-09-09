@@ -14,6 +14,7 @@ export const gemüse: Menu[] = [
     name_german: "Gebratenes Gemüse",
     price: "12.90",
     description: "Gebratenes saisonales Gemüse",
+    photo: "60清炒时菜.avif"
   },
   {
     number: "61",
@@ -77,6 +78,7 @@ export const gemüse: Menu[] = [
     name_german: "Gebratene Auberginen",
     price: "12.90",
     description: "Auberginen mit Paprika, Kartoffeln und Knoblauch",
+    photo: "68地三鲜.avif"
   },
   {
     number: "69",
@@ -92,6 +94,7 @@ export const gemüse: Menu[] = [
     name_german: "Kandierte Süsskartoffeln",
     price: "12.90",
     description: "Gebratene Süsskartoffeln mit Zucker Guss",
+    photo: "70拔丝地瓜.avif"
   },
   {
     number: "73",
