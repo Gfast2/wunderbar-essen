@@ -103,6 +103,7 @@ export const gemüse: Menu[] = [
     price: "12.90",
     description: "Mit Lauch und Knoblauch nach \"mama's Rezept\"",
     allergens: "1",
+    photo: "73番茄炒蛋.avif"
   },
   {
     number: "46",

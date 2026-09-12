@@ -62,6 +62,7 @@ export const schwein: Menu[] = [
     name_german: "Geschmorter Schweinedarm",
     price: "17.90",
     description: "Geschmorter Schweinedarm mit Paprika und Sellerie",
+    photo: "50溜肥肠.avif"
   },
   {
     number: "51",
