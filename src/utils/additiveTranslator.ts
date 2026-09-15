@@ -1,15 +1,18 @@
-import { additives } from '../data/keyValue/additive';
+import { additives, additives_english } from '../data/keyValue/additive';
 
 /**
- * Translates additive IDs to their German names
+ * Translates additive IDs to localized names
  * @param additiveIds - Comma-separated additive IDs (e.g., "1,3,4")
- * @returns Comma-separated additive names (e.g., "Ei, Soja, Gluten")
+ * @param language - The language to use for the translated names
+ * @returns Comma-separated additive names
  */
-export function translateAdditives(additiveIds: string | undefined): string {
+export function translateAdditives(additiveIds: string | undefined, language: 'german' | 'english' = 'german'): string {
   if (!additiveIds) return '';
+
+  const translations = language === 'english' ? additives_english : additives;
 
   return additiveIds
     .split(',')
-    .map((id) => additives[id as keyof typeof additives] || id)
+    .map((id) => translations[id as keyof typeof translations] || id)
     .join(', ');
 }

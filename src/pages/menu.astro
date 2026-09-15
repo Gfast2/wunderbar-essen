@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import PhotoModal from '../components/PhotoModal.astro';
 import MenuSection from '../components/MenuSection.astro';
+import type { Menu } from '../data/menu/content.config';
 import { mittagsmenü } from '../data/menu/mittagsmenu';
 import { gemüse } from '../data/menu/gemüse';
 import { desert } from '../data/menu/desert';
@@ -16,58 +17,73 @@ import { rind } from '../data/menu/rind';
 import { lamm } from '../data/menu/lamm';
 import { getränke } from '../data/menu/getränke';
 import { bierAndWein } from '../data/menu/bierAndWein';
+import { menuSectionTranslations, menuTranslations } from '../data/menu/i18n';
 
 const pageTitle = 'WUNDERBAR ESSEN Menü – Chinesische Küche in Berlin';
 const pageDescription = 'Entdecken das WUNDERBAR ESSEN Menü in Berlin: Dim Sum, Suppen, Reisgerichte, Fleischspezialitäten und Getränke für authentische chinesische Geschmackserlebnisse.';
 const pageUrl = 'https://www.wunderbar-essen.de/menu';
 const pageImage = '/logo-text.png';
+
+const menuSections: { sectionId: string; items: Menu[] }[] = [
+	{ sectionId: 'mittagsmenu', items: mittagsmenü },
+	{ sectionId: 'gemuese', items: gemüse },
+	{ sectionId: 'desert', items: desert },
+	{ sectionId: 'reiseAndNudeln', items: reiseAndNudeln },
+	{ sectionId: 'meeresfruechte', items: meeresfrüchte },
+	{ sectionId: 'schwein', items: schwein },
+	{ sectionId: 'dimsum', items: dimsum },
+	{ sectionId: 'vorspeise', items: vorspeise },
+	{ sectionId: 'suppen', items: suppen },
+	{ sectionId: 'huhnAndEnte', items: huhnAndEnte },
+	{ sectionId: 'rind', items: rind },
+	{ sectionId: 'lamm', items: lamm },
+	{ sectionId: 'getränke', items: getränke },
+	{ sectionId: 'bierAndWein', items: bierAndWein },
+];
 ---
 
 <Layout title={pageTitle} description={pageDescription} url={pageUrl} image={pageImage}>
 	<PhotoModal />
 	<div id="menu-container">
 		<div id="menu-header">
-			<h1>Menü</h1>
+			<h1>
+				<span data-language-german>{menuTranslations.heading.german}</span>
+				<span data-language-english>{menuTranslations.heading.english}</span>
+			</h1>
 			<div id="filter-tags">
-				<button class="filter-tag active" data-category="mittagsmenu">Mittagsmenü</button>
-				<button class="filter-tag" data-category="gemuese">Gemüse</button>
-				<button class="filter-tag" data-category="desert">Dessert</button>
-				<button class="filter-tag" data-category="reiseAndNudeln">Reis & Nudeln</button>
-				<button class="filter-tag" data-category="meeresfrüchte">Meeresfrüchte</button>
-				<button class="filter-tag" data-category="schwein">Schwein</button>
-				<button class="filter-tag" data-category="dimsum">Dim Sum</button>
-				<button class="filter-tag" data-category="vorspeise">Vorspeise</button>
-				<button class="filter-tag" data-category="suppen">Suppen</button>
-				<button class="filter-tag" data-category="huhnAndEnte">Hühn & Ente</button>
-				<button class="filter-tag" data-category="rind">Rind</button>
-				<button class="filter-tag" data-category="lamm">Lamm</button>
-				<button class="filter-tag" data-category="getränke">Getränke</button>
-				<button class="filter-tag" data-category="bierAndWein">Bier & Wein</button>
+				{Object.entries(menuSectionTranslations).map(([sectionId, translation], index) => (
+					<button class:list={['filter-tag', index === 0 && 'active']} data-category={sectionId}>
+						<span data-language-german>{translation.german.title.replace(/\s*\([^)]*\)/, '')}</span>
+						<span data-language-english>{translation.english.title.replace(/\s*\([^)]*\)/, '')}</span>
+					</button>
+				))}
 			</div>
 		</div>
 
 		<div id="menu-content">
-			<MenuSection sectionId="mittagsmenu" title="Mittagsmenü (H1-H12)" subtitle="(12:00 - 15:00 Uhr) Zu jedem Gericht: Sauer-Scharf-Suppe als Vorspeise & Reis zum Hauptgang." items={mittagsmenü} />
-			<MenuSection sectionId="gemuese" title="Gemüse (59-73)" items={gemüse} />
-			<MenuSection sectionId="desert" title="Dessert (82-85)" items={desert} />
-			<MenuSection sectionId="reiseAndNudeln" title="Reis & Nudeln (71-81)" items={reiseAndNudeln} />
-			<MenuSection sectionId="meeresfrüchte" title="Meeresfrüchte (52-58)" items={meeresfrüchte} />
-			<MenuSection sectionId="schwein" title="Schwein (41-51)" items={schwein} />
-			<MenuSection sectionId="dimsum" title="Dim Sum (11-20)" items={dimsum} />
-			<MenuSection sectionId="vorspeise" title="Vorspeise (1-10)" items={vorspeise} />
-			<MenuSection sectionId="suppen" title="Suppen (11-20)" items={suppen} />
-			<MenuSection sectionId="huhnAndEnte" title="Hühn & Ente (32-39)" items={huhnAndEnte} />
-			<MenuSection sectionId="rind" title="Rind (36-39)" items={rind} />
-			<MenuSection sectionId="lamm" title="Lamm (36-39)" items={lamm} />
-			<MenuSection sectionId="getränke" title="Getränke" items={getränke} />
-			<MenuSection sectionId="bierAndWein" title="Bier & Wein" items={bierAndWein} />
+			{menuSections.map(({ sectionId, items }) => {
+				const translation = menuSectionTranslations[sectionId];
+
+				return (
+					<MenuSection
+						sectionId={sectionId}
+						title={translation.german.title}
+						titleEnglish={translation.english.title}
+						subtitle={translation.german.subtitle}
+						subtitleEnglish={translation.english.subtitle}
+						items={items}
+					/>
+				);
+			})}
 		</div>
 
 		<div id="menu-footer">
 			
 		</div>
 
-		<button id="back-to-top" aria-label="Back to top">↑</button>
+		<button id="back-to-top" aria-label={menuTranslations.backToTop.english}>
+			↑
+		</button>
 	</div>
 
 	<script>
@@ -120,6 +136,18 @@ const pageImage = '/logo-text.png';
 </Layout>
 
 <style>
+:global([data-language-english]) {
+	display: none;
+}
+
+:global(body.language-english [data-language-german]) {
+	display: none;
+}
+
+:global(body.language-english [data-language-english]) {
+	display: inline;
+}
+
 #menu-container {
 	font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
 	max-width: 1200px;

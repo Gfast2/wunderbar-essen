@@ -1,15 +1,18 @@
-import { allergens } from '../data/keyValue/allergens';
+import { allergens, allergens_english } from '../data/keyValue/allergens';
 
 /**
- * Translates allergen IDs to their German names
+ * Translates allergen IDs to localized names
  * @param allergenIds - Comma-separated allergen IDs (e.g., "1,3,4")
- * @returns Comma-separated allergen names (e.g., "Ei, Soja, Gluten")
+ * @param language - The language to use for the translated names
+ * @returns Comma-separated allergen names
  */
-export function translateAllergens(allergenIds: string | undefined): string {
+export function translateAllergens(allergenIds: string | undefined, language: 'german' | 'english' = 'german'): string {
   if (!allergenIds) return '';
+
+  const translations = language === 'english' ? allergens_english : allergens;
 
   return allergenIds
     .split(',')
-    .map((id) => allergens[id as keyof typeof allergens] || id)
+    .map((id) => translations[id as keyof typeof translations] || id)
     .join(', ');
 }

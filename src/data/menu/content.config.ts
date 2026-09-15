@@ -1,0 +1,22 @@
+import { z } from 'zod';
+
+const menuSchema = z.object({
+    number: z.string(),
+    name_chinese: z.string(),
+    name_german: z.string(),
+    name_english: z.string().optional(),
+    price: z.string(),
+    description: z.string(),
+    description_english: z.string().optional(),
+    unit: z.string().optional(),
+    allergens: z.string().optional(),
+    additive: z.string().optional(),
+    // Link of the photo of the menu item
+    photo: z.string().optional(),
+    sub_type: z.array(z.object({
+        name: z.string(),
+        price: z.string(),
+    })).optional(),
+});
+
+export type Menu = z.infer<typeof menuSchema>;

@@ -90,6 +90,7 @@ const schema = JSON.stringify({
       <div class="header-content">
         <img src="logo-text.png" alt="Wunderbar Logo" class="logo" />
         <nav class="menu" aria-label="Hauptnavigation">
+          <button id="language-toggle" type="button" aria-label="Switch to English" aria-pressed="false">🇺🇸</button>
           <a href="/" class={isHome ? 'is-active' : ''}>Home</a>
           <a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
         </nav>
@@ -98,6 +99,36 @@ const schema = JSON.stringify({
     <slot />
   </body>
 </html>
+
+<script>
+  function applyLanguage(language: 'german' | 'english') {
+    document.body.classList.toggle('language-english', language === 'english');
+
+    const toggle = document.getElementById('language-toggle');
+    if (toggle) {
+      const isEnglish = language === 'english';
+      toggle.textContent = isEnglish ? '🇺🇲' : '🇩🇪';
+      toggle.setAttribute('aria-label', isEnglish ? 'Auf Deutsch wechseln' : 'Switch to English');
+      toggle.setAttribute('aria-pressed', String(isEnglish));
+    }
+  }
+
+  function initLanguageToggle() {
+    const toggle = document.getElementById('language-toggle');
+    if (!toggle || toggle.dataset.initialized) return;
+
+    toggle.dataset.initialized = 'true';
+    toggle.addEventListener('click', () => {
+      const language = document.body.classList.contains('language-english') ? 'german' : 'english';
+      localStorage.setItem('wunderbar-language', language);
+      applyLanguage(language);
+    });
+
+    applyLanguage(localStorage.getItem('wunderbar-language') === 'english' ? 'english' : 'german');
+  }
+
+  document.addEventListener('astro:page-load', initLanguageToggle);
+</script>
 
 <style>
   html,
@@ -128,10 +159,14 @@ const schema = JSON.stringify({
 
   .menu {
     display: flex;
+    align-items: center;
     gap: 2rem;
   }
 
   .menu a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2rem;
     text-decoration: none;
     color: #333;
     font-weight: 500;
@@ -145,5 +180,38 @@ const schema = JSON.stringify({
   .menu a.is-active {
     font-weight: bold;
     text-decoration: underline overline #ff3028 3px;
+  }
+
+  #language-toggle {
+    display: inline-flex;
+    align-items: flex-end;
+    justify-content: last baseline;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #333;
+    font-family: inherit;
+    font-size: 1.8rem;
+    line-height: 1;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  #language-toggle:hover {
+    color: #666;
+  }
+
+  :global([data-language-english]) {
+    display: none;
+  }
+
+  :global(body.language-english [data-language-german]) {
+    display: none;
+  }
+
+  :global(body.language-english [data-language-english]) {
+    display: inline;
   }
 </style>
