@@ -91,8 +91,8 @@ const schema = JSON.stringify({
         <img src="logo-text.png" alt="Wunderbar Logo" class="logo" />
         <nav class="menu" aria-label="Hauptnavigation">
           <button id="language-toggle" type="button" aria-label="Switch to English" aria-pressed="false">🇺🇸</button>
-          <a href="/" class={isHome ? 'is-active' : ''}>Home</a>
-          <a href="/menu" class={isMenu ? 'is-active' : ''}>Menü</a>
+          <a href="/" class={isHome ? 'is-active' : ''}><span data-language-german>Home</span><span data-language-english>Home</span></a>
+          <a href="/menu" class={isMenu ? 'is-active' : ''}><span data-language-german>Menü</span><span data-language-english>Menu</span></a>
         </nav>
       </div>
     </header>
@@ -103,6 +103,7 @@ const schema = JSON.stringify({
 <script>
   function applyLanguage(language: 'german' | 'english') {
     document.body.classList.toggle('language-english', language === 'english');
+    document.documentElement.lang = language === 'english' ? 'en' : 'de';
 
     const toggle = document.getElementById('language-toggle');
     if (toggle) {
