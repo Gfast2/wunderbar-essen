@@ -55,8 +55,8 @@ export const menuSectionTranslations: Record<string, Record<'german' | 'english'
     english: { title: 'Beef (36-39)' },
   },
   lamm: {
-    german: { title: 'Lamm (36-39)' },
-    english: { title: 'Lamb (36-39)' },
+    german: { title: 'Lamm (40-42)' },
+    english: { title: 'Lamb (40-42)' },
   },
   getränke: {
     german: { title: 'Getränke' },
