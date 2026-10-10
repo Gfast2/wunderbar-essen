@@ -32,6 +32,7 @@ export const meeresfrüchte: Menu[] = [
     description: "Grossgarnelen mit Schale, Zwiebeln, Knoblauch, Paprika, Szechuanpfeffer",
     description_english: "fried with shell, onions, bell peppers in pepper-salt coating (9)",
     allergens: "9",
+    photo: "54椒盐大虾.avif"
   },
   {
     number: "55",

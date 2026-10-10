@@ -35,6 +35,7 @@ export const mittagsmenü: Menu[] = [
     description: "Gebraten mit Gemüse, selbst gerösteten Erdnüssen, Chili und Knoblauch in pikanter Sichuan-Sauce, scharf",
     description_english: "Szechuan style with vegetables, home-roasted peanuts, chili, and garlic, spicy (5)",
     allergens: "5",
+    photo: "H3宫保鸡.avif"
   },
   {
     number: "H4",
